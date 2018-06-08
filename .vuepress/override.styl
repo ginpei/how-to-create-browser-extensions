@@ -1,0 +1,109 @@
+// Insert `html` before selectors
+// in order to increate specificity and override original theme.
+
+:root {
+  --layout-navbar-height: 3.6rem;
+}
+
+html body {
+  font-family: "游明朝", serif;
+}
+
+html .content:not(.custom) {
+  ul,
+  ol {
+    font-family: "游ゴシック", serif;
+    font-size: 0.8em;
+  }
+
+  a code {
+    color: #3eaf7c;
+  }
+
+  img {
+    max-height: calc(90vh - var(--layout-navbar-height));
+  }
+
+  & > h1 {
+    font-family: "游ゴシック", serif;
+    font-size: 3em;
+  }
+
+  & > h2 {
+    --heading-anchor-spacing: 1rem;
+    --base-padding: 1rem;
+    --padding-top: calc(var(--layout-navbar-height) + var(--heading-anchor-spacing) + var(--base-padding));
+
+    clear: both;
+    font-size: 3em;
+    margin: 0 -1rem 1rem;
+    padding: var(--padding-top) var(--base-padding) var(--base-padding);
+    position: relative;
+    text-shadow: 0 0 0.1em rgba(0,0,0,.3);
+
+    // pretend border in order to keep top padding for sticky header
+    &::before {
+      content: "";
+      background-color: #fff;
+      border: solid 1px #ccc;
+      border-radius: 0.1em;
+      box-shadow: 0 0 0.1em rgba(0,0,0,.1);
+      position: absolute;
+      top: calc(var(--padding-top) - var(--base-padding));
+      bottom: 0;
+      margin: 0 -1rem;
+      width: 100%;
+      z-index: -1;
+    }
+
+    a.header-anchor {
+      margin-left: -2rem;
+      margin-right: -2rem;
+    }
+  }
+
+  & > h3 {
+    font-size: 2em;
+
+    &::before {
+      display: inline-block;
+      content: "";
+      background-image: url("https://ginpen.com/wp-content/themes/ginpen-theme/img/guruguru.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      height: 1em;
+      position: relative;
+      top: -0.1em;
+      vertical-align: middle;
+      width: 1em;
+    }
+  }
+
+  figure {
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 1.2rem;
+    padding: 1rem;
+
+    figcaption {
+      font-size: 0.8em;
+      font-family: "游ゴシック", serif;
+      margin-top: 0.5em;
+      order: 1;
+      text-align: center;
+    }
+
+    p {
+      margin-bottom: 0;
+      margin-top: 0;
+      text-align: center;
+    }
+    
+    img {
+      border-radius: 0.2rem;
+      box-shadow: 0 0 10px #0006;
+    }
+  }
+}

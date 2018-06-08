@@ -1,0 +1,6 @@
+,*
+/node_modules/
+/npm-debug.log
+/add-on/**/*.js
+/tests/**/*.js
+/add-on.zip
